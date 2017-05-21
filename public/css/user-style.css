@@ -1,0 +1,112 @@
+/* bỏ khi ghép */
+.user-account{
+    padding-bottom: 50px;
+}
+/* bỏ khi ghép */
+
+/* lịch sử giao dịch */
+.form-group>label{
+    font-weight: unset;
+}
+.form-group>input{
+/*     width: 50%!important; */
+}
+.form-group-container{
+    display: flex;
+}
+
+
+div.sm-tab-title>span{
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.curEmail-container{
+    display: flex;
+}
+.curEmail-item>span{
+    margin-left: 10px;
+}
+
+
+.tab-title>h3{
+    margin-top: 10px !important;
+}
+
+
+
+/* list menu */
+list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover{
+    cursor: pointer;
+}
+
+.sm-tab{
+    display: none;
+}
+
+.list-menu-box a, .list-menu-box span {
+    padding: 10px;
+    color: #333;
+    font-size: 16px;
+}
+.list-menu-box li span:hover {
+    background-color: #d9d9d9;
+    cursor: pointer;
+}
+
+
+/* all button */
+.btn-primary{
+    background-color: #4d4d4d;
+    border-radius: 0!important;
+    border: 0!important;
+}
+.btn-primary:hover,{
+    background-color: #286090!important;
+}
+.btn-primary:active{
+    background-color: #4d4d4d!important;
+}
+.btn-default{
+    background-color: #d9d9d9;
+    border-radius: 0!important;
+    border: 0!important;
+}
+.btn-default:hover,{
+    background-color: #E24545!important;
+}
+.btn-default:active{
+     background-color: #d9d9d9!important;
+}
+
+
+/* user-information */
+.fix{
+    color: #008fff;
+    cursor: pointer;
+}
+
+/* fix email button */
+.fixEmailButton>button{
+    border-radius: 0;
+    border:none;
+    display: inline;
+    margin-bottom: 10px;
+}
+.fixEmailButton{
+    text-align: center;
+}
+
+
+/* adress */
+.address-textarea>textarea{
+    width: 100%;
+    resize: none;
+}
+.address-textarea{
+    margin-bottom: 10px;
+}
+footer {
+    margin-top: 68px;
+}

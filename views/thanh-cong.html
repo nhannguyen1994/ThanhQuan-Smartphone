@@ -1,0 +1,93 @@
+{% extends "index.html" %} {% block head %}
+<link href="/css/danh-sach-style.css" rel="stylesheet">
+<link href="/css/chi-tiet-style.css" rel="stylesheet">
+<link href="/css/gio-hang-style.css" rel="stylesheet"> {% endblock %} {% block content %}
+<section class="container" id="cart-page">
+	<div class="row mot-hang">
+		<a href="" class="big-title">Đơn hàng</a>
+		<span></span>
+	</div>
+	<div class="cart">
+		<h3>Đơn hàng của bạn đã được gửi thành công. Chúng tôi sẽ xử lí, xác nhận và chuyển hàng trong vòng 24h</h3>
+
+		<div class="row" style="margin-top: 50px;">
+			<div class="form-group">
+				<label for="delivery-name">Họ và tên: {{ orderData.name }}</label>
+			</div>
+			<div class="form-group">
+				<label for="delivery-phone">Số điện thoại: {{ orderData.phone }}</label>
+			</div>
+			<div class="form-group">
+				<label for="contact-email">Địa chỉ Email của bạn: {{ orderData.email }}</label>
+			</div>
+			<div class="form-group">
+				<label for="delivery-address">Địa chỉ nhận hàng: {{ orderData.address}}</label>
+			</div>
+			<div class="form-group">
+				<label for="note">Lời nhắn: {{ orderData.note }}</label>
+			</div>
+			<div class="form-group">
+				<label for="note">Hình thức thanh toán: {{ orderData.method }}</label>
+			</div>
+			<div class="form-group line4">
+				<label for="note">Ngày đặt hàng: {{ orderData.order_date }}</label>
+			</div>
+			<div class="form-group line4">
+				<label for="note">Trạng thái đơn hàng: {{ orderData.status }}</label>
+			</div>
+			<div class="form-group line4">
+				<label for="note">Tổng cộng: {{ total }} VNĐ</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row product-selected">
+			<div class="table-responsive">
+				<table class="table cart-table">
+					<thead>
+						<tr>
+							<th>STT</th>
+							<th colspan="2">Sản phẩm</th>
+							<th>Giá</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if products %} {% for item in products %}
+						<tr>
+							<td>{{ loop.index }}</td>
+							{% if (item.product_type_id == 'ptdt')%}
+							<td class="img_cart"><img src="/images/products/{{ item.product_id }}_0.jpg"></td>
+							{% else %}
+							<td class="img_cart"><img src="/images/phukien/{{ item.product_id }}_0.jpg"></td>
+							{% endif %}
+							<td>{{ item.product_name }}</td>
+							<td>{{ item.price }} VNĐ</td>
+							<td>{{ cart[item.product_id] }}</td>
+							<td>{{ item.total }} VNĐ</td>
+						</tr>
+						{% endfor %} {% else %}
+						<tr>
+							<td colspan="7">Không có sản phẩm trong giỏ</td>
+						</tr>
+						{% endif %}
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="7">
+								<a href="/dien-thoai" name="" class="btn btn-success" role="button">Tiếp tục mua hàng</a>
+								<a href="/dien-thoai" name="capnhat" class="btn btn-danger" role="button">Hủy đơn hàng</a>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+
+		
+		<!-- enf product-selected -->
+	</div>
+
+</section>
+{% endblock %}

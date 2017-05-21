@@ -1,0 +1,129 @@
+{% extends "index.html" %} {% block head %}
+<link href="/css/danh-sach-style.css" rel="stylesheet">
+<link href="/css/chi-tiet-style.css" rel="stylesheet">
+<script type="text/javascript" src="/js/detail-js.js"></script>
+<script src="/owlcarousel/owl.carousel.min.js"></script>
+<script src="/owlcarousel/carousel.js"></script>
+{% endblock %} {% block content %}
+<section class="container" id="list-page">
+	<div class="row mot-hang" style="margin-bottom:30px;">
+		<a href="/phu-kien" class="big-title big-title-list-page">PHỤ KIỆN</a>
+		<span></span>
+	</div>
+	<!-- end -row -->
+
+	<!-- THANH TIÊU ĐỀ //////////////////////////////////////////////////////////////////////// -->
+
+	<div class="row">
+
+		<div class="col-md-6 produce-detail">
+			<div class="image-product-box">
+
+				<div class="mau mau0">
+					{% for each in images %}
+					{% if loop.first %}
+						<img class="product-big-image showImageAfterOnclick" src="/images/phukien/{{each.url_image}}"> 
+					{% else %}
+						<img class="product-sm-image ClickEvent" src="/images/phukien/{{each.url_image}}"> 
+					{% endif %}
+					{% endfor%}
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6 col-xs-12 produce-detail-2">
+			<h2 class="name-product">{{detail.product_name}}</h2>
+			<h2 class="price-product"> {{detail.price}} VNĐ</h2>
+			<p class="code">Mã sản phẩm:<span>{{detail.product_id}}</span></p>
+			<ul class="promotion">
+				<li>
+					{% for prop, value in detail.description %}
+					<ul>
+						<li>{{prop}}:</li>
+						<li>{{value}}</li>
+					</ul>
+					{% endfor %}
+				</li>
+			</ul>
+
+			<p class="quantity color-text"> Hiện có : {{detail.quantity}} sản phẩm</p>
+
+			<span class="buy product-buy-box"><a href="/gio-hang/add-to-cart/{{detail.product_id}}">MUA HÀNG</a></span>
+			<span class="buy product-buy-box added">Đã thêm vào giỏ hàng</span>
+
+		</div>
+
+		<div class="col-md-12 col-sm-12 col-sx-12 produce-detail detail-product-box">
+			<h3>Thông số kỹ thuật </h3>
+			<ul class="cau-hinh-don-gian">
+				{% for mainProp, propValue in detail.main_property %}
+				<li>
+					<p>{{mainProp}}:<span>{{propValue}}</span></p>
+				</li>
+				{% endfor %}
+			</ul>
+			<button class="watch-more">Xem cấu hình chi tiết</button>
+			<ul class="cau-hinh-chi-tiet">
+				{% for mainProp, propValue in detail.detail_property %}
+				<li class="label">{{mainProp}}</li>
+				{% for detailProp, value in propValue %}
+				<li>
+					<p>{{detailProp}}</p>
+					<p>{{value}}</p>
+				</li>
+				{% endfor %} {% endfor %}
+			</ul>
+			<button class="watch-more close-button">Đóng</button>
+
+		</div>
+
+	</div>
+	<!-- end col-->
+	</div>
+	<!-- end row -->
+
+	<!-- HẾT CỘT NÀY RỒI  //////////////////////////////////////////////////////////////////////////////////////////// -->
+	<div class="container">
+		<div class="row mot-hang">
+			<a href="/hang-dien-thoai/{{detail.manufacturer_id}}" class="big-title">SẢN PHẨM TƯƠNG TỰ</a>
+			<span></span>
+		</div>
+		<!-- end row -->
+
+		<div class="row">
+			<div class="owl-carousel">
+				{% for each in productSimilar %}
+				<div class="owl-carousel-slide">
+					<div class="product-box ph">
+						<img src="/images/phukien/{{each.product_id}}_0.jpg">
+						<div class="name-price">
+							<p class="name-product">{{each.product_name}}</p>
+							<p class="price-product">{{each.price}} VNĐ</p>
+							<div class="info-product info-ph">
+								<div>
+									<p>{{each.product_name}}</p>
+									<p>{{each.price}} VNĐ</p>
+								</div>
+								<a href="chi-tiet.html" class="watch">Xem chi tiết</a>
+								<span class="buy"><a href="/gio-hang/add-to-cart/{{each.product_id}}">Mua hàng</a></span>
+								<span class="buy added">Đã thêm vào giỏ hàng</span>
+							</div>
+							<!-- end info-box -->
+						</div>
+						<!-- end name-price -->
+					</div>
+					<!-- end product-box -->
+				</div>
+				{% endfor %}
+
+			</div>
+			<!-- end owl-carousel -->
+		</div>
+		<!-- end row -->
+		<!-- HẾT HÀNG NÀY RÔI / HẾT HÀNG NÀY RÔI / HẾT HÀNG NÀY RÔI / HẾT HÀNG NÀY RÔI /-->
+	</div>
+
+</section>
+
+{% endblock %}

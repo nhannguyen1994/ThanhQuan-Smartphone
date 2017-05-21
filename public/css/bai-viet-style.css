@@ -1,0 +1,38 @@
+#content-page img {
+	width: 100%;
+}
+#content-page h1 {
+    font-weight: bold;
+}
+#content-page p {
+    margin: 30px 30px;
+    font-size: 16px;
+    line-height: 28px;
+}
+#content-page .col-md-3 {
+	margin-bottom:30px; 
+}
+#content-page  .col-md-9 span {
+	margin-bottom: 20px;
+}
+
+
+
+.big-title {
+    margin-bottom: 0px;
+}
+.big-title2 {
+    margin-bottom: 30px;
+}
+.col-md-9 {padding: 0px 15px;
+}
+
+
+
+@media (min-width: 1px) {
+	h1 {font-size:30px ; line-height: 40px !important; }
+}
+@media (min-width: 992px) {
+	h1 {font-size:36px ; line-height: 50px !important; }
+}
+

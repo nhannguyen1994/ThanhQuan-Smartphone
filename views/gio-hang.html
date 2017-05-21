@@ -1,0 +1,151 @@
+{% extends "index.html" %} 
+{% block head %}
+<link href="/css/danh-sach-style.css" rel="stylesheet">
+<link href="/css/chi-tiet-style.css" rel="stylesheet">
+<link href="/css/gio-hang-style.css" rel="stylesheet">
+<!--<script src="/js/index.js"></script>-->
+{% endblock %} 
+{% block content %}
+<section class="container" id="cart-page">
+	<div class="row mot-hang">
+		<a href="" class="big-title">GIỎ HÀNG</a>
+		<span></span>
+	</div>
+	<div class="cart">
+
+		<div class="row product-selected">
+			<div class="table-responsive">
+				<form action="" method="post">
+					<table class="table cart-table">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th colspan="2">Sản phẩm</th>
+								<th>Giá</th>
+								<th>Số lượng</th>
+								<th>Thành tiền</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if product %}
+								{% for item in product %}
+									<tr>
+										<td>{{ loop.index }}</td>
+										{% if (item.product_type_id == 'ptdt')%}
+										<td class="img_cart"><img src="/images/products/{{ item.product_id }}_0.jpg"></td>
+										{% else %}
+										<td class="img_cart"><img src="/images/phukien/{{ item.product_id }}_0.jpg"></td>
+										{% endif %}
+										<td>{{ item.product_name }}</td>
+										<td>{{ item.price }} VNĐ</td>
+										<td><input type="number" class="" min="0" name="{{ item.product_id }}" value="{{ cart[item.product_id] }}"></td>
+										<td>{{ item.total }} VNĐ</td>
+										<!--delete product in shopping cart-->
+										<!--
+										<td><span class="del"><img src="../images/del.png"</span></td>
+										-->
+										<td class="remove"><div>&times</div></td>
+									</tr>
+								{% endfor %}
+							{% else %}
+								<tr>
+									<td colspan="7">Không có sản phẩm trong giỏ</td>
+								</tr>
+							{% endif %}
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="7">
+									<a href="/dien-thoai" name="capnhat" class="btn btn-success" role="button">Tiếp tục mua hàng</a>
+									{% if cart %}
+									<input type="submit" value="Cập nhật" name="capnhat" class="btn btn-danger" role="button">
+									{% endif %}
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</form>
+			</div>
+		</div>
+		<!-- enf product-selected -->
+	</div>
+
+	<div class="row">
+		<form action="/thanh-cong/" method="post">
+			<div class="col-md-7">
+				<div class="form-group d-name">
+					<label for="delivery-name">Họ và tên: </label>
+					<input type="text" class="form-control" id="delivery-name" name="name" value="{{ user.fullname }}" required>
+				</div>
+				<div class="form-group d-phone">
+					<label for="delivery-phone">Số điện thoại:</label>
+					<input type="text" class="form-control" id="delivery-phone" name="phone" placeholder="" required>
+				</div>
+				<div class="form-group">
+					<label for="contact-email">Địa chỉ Email của bạn: </label>
+					<input type="email" class="form-control" id="contact-email" name="email" value="{{ user.email }}" required>
+					<p>Cần nhập email để nhận được thông tin đơn hàng từ Thành Quân SmartPhone</p>
+				</div>
+				<div class="form-group">
+					<label for="delivery-address">Địa chỉ nhận hàng:</label>
+					<input type="text" class="form-control" id="delivery-address" name="address" value="{{ user.address }}" required>
+					<p>Phí Ship được tính với khoảng cách trên 3km tính từ cửa hàng</p>
+				</div>
+				<div class="form-group line4">
+					<label for="note">Lời nhắn:</label>
+					<br>
+					<textarea rows="2" name="note" id="note"></textarea>
+					<p>Ghi chú khi giao hàng (vd: ngày, giờ giao hàng)</p>
+				</div>
+			</div>
+			<!-- end col-->
+
+			<div class="total  col-md-4 col-md-offset-1">
+				<div class="payment">
+					<label>Hình thức thanh toán</label>
+					<div>
+						<input id="bank_transfer" type="radio" name="method" value="bank" checked="checked">
+						<label for="bank_transfer">Chuyển khoản ngân hàng</label>
+					</div>
+
+					<div class="online-payment-box">
+						<input id="online_payment" class="online-payment-input" type="radio" name="method" value="online">
+						<label for="online_payment" class="online-payment-label">Thanh toán trực tuyến</label>
+					</div>
+
+					<div>
+						<input id="cod_payment" type="radio" name="method" value="cod">
+						<label for="cod_payment">COD - Nhận hàng trả tiền</label>
+					</div>
+				</div>
+				<!-- end payment-->
+
+				<div class="total-line total-line-1">
+					<p>Tạm tính:</p>
+					<p>{{ total }} VNĐ</p>
+				</div>
+				<div class="total-line total-line-2">
+					<p>Phí Ship:</p>
+					<p>0 VNĐ</p>
+				</div>
+				<div class="total-line total-line-3">
+					<p>Giảm giá:</p>
+					<p>0 VNĐ</p>
+				</div>
+				<div class="total-line total-line-4">
+					<p>Tổng cộng:</p>
+					<p>{{ total }} VNĐ</p>
+				</div>
+				<input type="hidden" value="{{csrfToken}}" name="_csrf">
+				{% if cart %}
+				<input type="submit" name="thanhtoan" value="Thanh toán" class="btn btn-primary btn-lg btn-block">
+				{% endif %}
+			</div>
+			<!-- end col-->
+		</form>
+	</div>
+	<!--end row -->
+
+</section>
+{% endblock %}

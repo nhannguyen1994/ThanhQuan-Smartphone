@@ -1,0 +1,151 @@
+<nav>
+	<div class="modal fade accountModal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Đăng nhập tài khoản</h4>
+					<form action="/auth/log-in" method="POST">
+						<div class="form-group accountFormGroupStyle">
+							<label>Tên đăng nhập</label>
+							<input type="text" name="email" class="form-control" placeholder="Email..." required>
+						</div>
+						<div class="form-group  accountFormGroupStyle">
+							<label>Mật khẩu</label>
+							<input type="password" name="password" class="form-control" placeholder="Mật khẩu" required>
+						</div>
+						<div class="checkbox accountFormGroupStyle form-group accountCheckbox">
+							<div>
+								<label>
+									<input type="checkbox" name="saveLogIn" > <span class="checkboxText">Lưu đăng nhập</span>
+								</label>
+							</div>
+							<div>
+								<span data-toggle="modal" data-target="#lostPassword" data-dismiss="modal" class="checkboxText lostPassword">Tìm lại mật khẩu</span>
+							</div>
+						</div>
+						<div class="form-group accountFormGroupStyle submitButton">
+							<button type="submit" class="btn btn-submit-account">Đăng Nhập</button>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<div class="sub-container">
+								<div class="sub-left sub-item"></div>
+								<div class="sub-text sub-item"><span>Hoặc</span></div>
+								<div class="sub-right sub-item"></div>
+							</div>
+						</div>
+					</form>
+					<div class=" form-group oauth-container">
+						<div class="oauth-item fb">
+							<img src="/images/facebook.png">
+							<button>Đăng nhập bằng Facebook</button>
+						</div>
+						<div class="oauth-item gg">
+							<img src="/images/google.png">
+							<button>Đăng nhập bằng Google</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="modal fade accountModal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Đăng ký tài khoản</h4>
+					<form action="/auth/sign-up" method="POST">
+						<div class="form-group accountFormGroupStyle">
+							<label>Họ và Tên</label>
+							<input type="text" name="fullname" class="form-control" placeholder="Họ Tên" required>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<label>Tên đăng nhập</label>
+							<input type="text" name="email" class="form-control" placeholder="Email hoặc Số điện thoại" required>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<label>Số Điện Thoại</label>
+							<input type="text" name="phone" class="form-control" placeholder="Số điện thoại" required>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<label>Mật khẩu</label>
+							<input type="password" name="password" class="form-control" placeholder="Mật khẩu phải lớn hơn 6 và nhỏ hơn 30 ký tự" required>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<label>Nhập lại Mật khẩu</label>
+							<input type="password" name="password2" class="form-control" placeholder="Nhập lại Mật khẩu phải giống Mật khẩu" required>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<label>Giới tính</label>
+							<select name="gender" required>
+								<option checked="checked">Khác</option>
+								<option>Nữ</option>
+								<option>Nam</option>
+							</select>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<label>Địa chỉ của bạn</label>
+							<textarea name="address" class="form-control accountFormGroupStyle" rows="3" required></textarea>
+						</div>
+						<div class="checkbox form-group accountFormGroupStyle">
+							<label>
+							<input type="checkbox" name="agreement" required> Tôi đồng ý với các điều khoản của shop </input>
+						</label>
+						</div>
+						<div class="form-group accountFormGroupStyle submitButton">
+							<button type="submit" class="btn btn-submit-account">Đăng Ký</button>
+						</div>
+						<div class="form-group accountFormGroupStyle">
+							<div class="sub-container">
+								<div class="sub-left sub-item"></div>
+								<div class="sub-text sub-item"><span>Hoặc</span></div>
+								<div class="sub-right sub-item"></div>
+							</div>
+						</div>
+					</form>
+					<div class=" form-group oauth-container">
+						<div class="oauth-item fb">
+							<img src="/images/facebook.png">
+							<button>Đăng nhập bằng Facebook</button>
+						</div>
+						<div class="oauth-item gg">
+							<img src="/images/google.png">
+							<button>Đăng nhập bằng Google</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade accountModal" id="lostPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Tìm lại Mật khẩu</h4>
+					<form>
+						<div class="form-group accountFormGroupStyle">
+							<label>Nhập lại Email hoặc Số điện thoại</label>
+							<input type="text" name="" class="form-control" placeholder="Email hoặc Số điện thoại">
+						</div>
+
+
+						<div class="form-group  lostPasswordBtn">
+							<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+							<button type="button" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" class="btn btn-danger">Bỏ qua</button>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</nav>
+<!-- HEADER / HEADER / HEADER / HEADER / HEADER / HEADER / HEADER / HEADER / HEADER / HEADER /-->
+
+<div class="blank-box"></div>
+<!-- khoảng trắng ở phía trên để cách header với banner-->

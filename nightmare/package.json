@@ -1,0 +1,14 @@
+{
+  "name": "nightmare",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Linh Ngo",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.3.0",
+    "image-downloader": "^3.2.1",
+    "nightmare": "^2.10.0",
+    "shelljs": "^0.7.7",
+    "shortid": "^2.2.8"
+  }
+}

@@ -1,0 +1,17 @@
+.big-title {
+	margin-bottom: 30px; 
+}
+.pagination {
+margin:  0;
+
+}
+.sale {
+	    text-decoration: line-through;
+	    color:#999 !important;
+}
+.info-product span:first-child {
+	border: none;
+	display: inline-block;
+	font-weight: normal;
+	padding: 0;
+}

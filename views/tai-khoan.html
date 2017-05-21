@@ -1,0 +1,209 @@
+{% extends "index.html" %} 
+{% block head %}
+<!--<link rel="stylesheet" type="text/css" href="/css/login-form-style.css">
+<link rel="stylesheet" type="text/css" href="/css/banner-style.css">-->
+<link rel="stylesheet" type="text/css" href="/css/user-style.css">
+<link rel="stylesheet" type="text/css" href="/css/danh-sach-style.css">
+<script type="text/javascript" src="/js/user-js.js"></script>
+{% endblock %} 
+{% block content %}
+<section class="user-account container">
+	<!-- body -->
+	<div class="row mot-hang">
+		<a class="big-title" href="">QUẢN LÝ TÀI KHOẢN</a>
+		<span></span>
+	</div>
+	<div class="row">
+		{% if messages.success %}
+			<div class="alert alert-danger">{{ messages.success }}</div>
+		{% endif %}
+		{% if messages.error %}
+		<div class="alert alert-danger">{{ messages.error }}</div>
+		{% endif %}
+		<aside class="list-menu-box col-md-3">
+			<ul>
+				<li class="menu-box">
+					<span class="title-list sap-xep-title">TÀI KHOẢN THÀNH VIÊN</span>
+					<ul class="sap-xep">
+
+						<li class=" onclick list-group-default" showSmallTabs="user-info-default"><span class="special">Thông tin tài khoản</span></li>
+						<li class=" onclick" showSmallTabs="security"><span class="special">Bảo mật và mật khẩu</span></li>
+					</ul>
+				</li>
+			</ul>
+		</aside>
+
+		<article class="member account-content col-md-9">
+			<div class="account-information tab">
+				<div class="user-info-default sm-tab">
+					<div>
+						<div class="tab-title">
+							<h3>Thông tin cơ bản</h3>
+						</div>
+						<div>
+							<div class="sm-tab-title">
+								<span>Thông tin cá nhân</span>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<table class="table table-bordered">
+										<tr>
+											<td>Tên Đăng Nhập</td>
+											<td>{{ user.email }}</td>
+										</tr>
+										<tr>
+											<td>Số Điện Thoại</td>
+											<td>{{ user.phone }}</td>
+										</tr>
+										<tr>
+											<td>Giới Tính</td>
+											<td>{{ user.gender }}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="address-textarea col-md-6">
+									<div class="sm-tab-title">
+										<span>Địa chỉ nhận hàng: </span>
+									</div>
+									<textarea disabled rows="3" class="">{{ user.address }}</textarea>
+								</div>
+							</div>
+						</div>
+						<div>
+							<button class="btn btn-primary customize-button">Chỉnh sửa</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="user-info-customize sm-tab">
+					<div>
+						<div class="tab-title">
+							<h3>Thay đổi thông tin cá nhân</h3>
+						</div>
+						<div>
+							<form class="form" action="/auth/edit-user" method="POST">
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="memberName">Tên Khách Hàng</label>
+										<input id="memberName" type="text" class="form-control" name="newName" value="{{user.fullname}}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="memberName">Số Điện Thoại/label>
+										<input id="memberName" type="text" class="form-control" name="newPhone" value="{{user.phone}}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="address-textarea col-md-6">
+										<div class="sm-tab-title">
+											<span>Địa Chỉ Nhận Hàng</span>
+										</div>
+										<textarea rows="3" name="newAddress" value="">{{user.address}}</textarea>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Cập Nhật</button>
+									<button type="button" class="btn btn-default customize-cancel-button">Bỏ Qua</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="user-security tab">
+				<div class="security sm-tab">
+					<div>
+						<div class="tab-title">
+							<h3>Bảo Mật</h3>
+						</div>
+						<div class="sm-tab-title">
+							<span>Thông tin bảo mật</span>
+						</div>
+						<div class="row">
+							<!--<div class="col-md-6">
+								<table class="table table-bordered">
+									<tr>
+										<td>
+											{{ user.fullname }}
+										</td>
+										<td>
+
+										</td>
+									</tr>
+									<tr>
+										<td> {{ user.email }}</td>
+									</tr>
+									<tr>
+										<td> {{ user.phone }}</td>
+										<td>
+											<span data-toggle="modal" data-target="#fixPhoneNumber" class="fix fixPhoneNumber">Sửa</span>
+										</td>
+									</tr>
+								</table>
+							</div>-->
+						</div>
+					</div>
+					<div>
+						<div class="sm-tab-title">
+							<span>Mật khẩu</span>
+						</div>
+						<div class="form-group">
+							<span>Mật khẩu chưa được thay đổi</span>
+						</div>
+						<div>
+							<button type="button" class="btn btn-primary changePasswordButton">Thay đổi mật khẩu</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="password-customize sm-tab">
+					<div class="tab-title">
+						<h3>Đổi Mật Khẩu</h3>
+					</div>
+					<div class="sm-tab-title">
+						<span>Tài khoản</span>
+					</div>
+					<div>
+						<form class="form" action="/auth/edit-user-pass" method="POST">
+							<div class="curEmail-container row">
+								<p class="form-control-static col-md-6">Tên đăng nhập</p>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="UPassword">Mật Khẩu cũ</label>
+									<input id="UPassword" type="password" name="oldPass" placeholder="Nhập Mật Khẩu cũ" class="form-control">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="newUPassword">Mật Khẩu mới</label>
+									<input id="newUPassword" type="password" name="newPass" placeholder="Nhập mật khẩu mới" class="form-control">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+
+									<label for="confirmNewPass">Nhập lại Mật khẩu mới</label>
+									<input id="confirmNewPass" type="password" name="newPass2" placeholder="Nhập lại mật khẩu mới" class="form-control">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<button type="submit" class="btn btn-primary">Thay Đổi Mật Khẩu</button>
+									<button type="button" class="btn btn-default cancelChangePassBtn">Bỏ Qua</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+{% endblock %}

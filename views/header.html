@@ -1,0 +1,134 @@
+<div class="search-bar">
+	<div class="container">
+		<div class="row no-bg">
+			<div class="col4 dia-chi">
+				<p><b>Địa chỉ: </b> 169 Ga Đỗ Xá - Thường Tín - Hà Nội</p>
+				<p><b>Liên hệ:</b> 0943271111 _ 0963948686</p>
+			</div>
+			<div class="search-box">
+				<form role="search" action="/search" method="POST">
+					<div>
+						<input type="text" name="search" placeholder="Bạn muốn tìm gì ?">
+						<button class="search-button glyphicon glyphicon-search" type="submit"></button>
+					</div>
+				</form>
+			</div>
+			{% if not login %}
+			<div class="sign log-in display-none">
+				<span id="login" class="show-login">Đăng nhập - Đăng ký</span>
+				<ul class="logged-box log-in-box">
+					<li>
+						<span data-toggle="modal" data-target="#loginModal">Đăng nhập </span>
+					</li>
+					<li>
+						<span data-toggle="modal" data-target="#registerModal">Đăng Ký</span>
+					</li>
+
+				</ul>
+			</div>
+			{% else %}
+			<div class="sign logged display-none">
+				{% if login %}
+				<span id="login"> $ {{ user.email }}</span> {% else %}
+				<span id="login"> $ Tên người dùng</span> {% endif %}
+				<ul class="logged-box">
+					<li><a href="/auth/tai-khoan">Quản lý tài khoản</a></li>
+					<li><a href="/auth/don-hang">Đơn hàng của tôi</a></li>
+					<li><a href="/auth/logout" class="onclick-loggoff show-logged loggoff-button">Đăng xuất</a></li>
+					<!--href="/auth/logout"-->
+				</ul>
+			</div>
+			{% endif %}
+		</div>
+		<!-- end row -->
+	</div>
+	<!-- end container -->
+</div>
+<!-- end search-bar -->
+
+
+<div class="main-menu-bar">
+	<div class="container">
+		<div class="row">
+			<div class="menu-button-box">
+				<button class="menu-button" type="button">
+                </button>
+			</div>
+			<div class="logo-box">
+				<a class="logo" href="/"></a>
+			</div>
+			<div class="main-menu-box">
+				<nav class="main-menu">
+					<ul>
+						<!--<li class="dkdn"><span href="#">ĐĂNG KÍ - ĐĂNG NHẬP</span>
+							<ul class="logged-box dkdn-box ">
+								<li>
+									<span data-toggle="modal" data-target="#loginModal">Đăng nhập </span>
+								</li>
+								<li>
+									<span data-toggle="modal" data-target="#registerModal">Đăng Ký</span>
+								</li>
+							</ul>
+						</li>
+						<li class="usn"><span href="#">Username</span>
+							<ul class="logged-box usn-box">
+								<li><a href="/tai-khoan">Quản lý tài khoản</a></li>
+								<li><a href="/gio-hang">Đơn hàng của tôi</a></li>
+								<li><span class="onclick-loggoff show-logged loggoff-button"><a href="/auth/logout">Đăng xuất</a></span></li>
+							</ul>
+						</li>-->
+						<li class="mm-tc"><a href="/">TRANG CHỦ</a></li>
+						<li class="mm-dt"><a href="/dien-thoai">ĐIỆN THOẠI</a>
+
+							<div class="menu-dropdown menu-dropdown1">
+								<ul>
+									<li>HÃNG SẢN XUẤT</li>
+									<li><a href="/hang-dien-thoai/apple">APPLE</a></li>
+									<li><a href="/hang-dien-thoai/samsung">SAMSUNG</a></li>
+									<li><a href="/hang-dien-thoai/oppo">OPPO</a></li>
+									<li><a href="/hang-dien-thoai/cac-hang-khac">Các hãng khác</a></li>
+								</ul>
+								<ul>
+									<li>GIÁ TIỀN</li>
+									<li><a href="/dien-thoai/?gia=den5">Dưới 5 Triệu</a></li>
+									<li><a href="/dien-thoai/?gia=5den10">Từ 5 đến 10 triệu</a></li>
+									<li><a href="/dien-thoai/?gia=10den15">Từ 10 đến 15 triệu</a></li>
+									<li><a href="/dien-thoai/?gia=tren15">Trên 15 triệu</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="mm-pk"><a href="/phu-kien">PHỤ KIỆN</a>
+							<!--<div class="menu-dropdown menu-dropdown2">
+								<ul>
+									{#{% for each in accessory %}
+									<li><a href="/phu-kien/{{ each.category_id}}">{{ each.category_name }}</a></li>
+									{% endfor %}#}
+									<li><a href="/phu-kien" class="pk-icon-1">Pin sạc</a></li>
+									<li><a href="/phu-kien" class="pk-icon-1">Pin sạc</a></li>
+									<li><a href="/phu-kien" class="pk-icon-1">Pin sạc</a></li>
+
+								</ul>
+							</div>-->
+						</li>
+						<li class="mm-tt"><a href="/tin-tuc">TIN TỨC</a></li>
+						<li class="mm-lh"><a href="/lien-he">LIÊN HỆ</a></li>
+					</ul>
+				</nav>
+			</div>
+			<!--
+			<div class="gh-box">
+				<a class="gh" href="/gio-hang"></a>
+			</div>
+			-->
+			<div class="gh-box" style="float: right; cursor: pointer; padding-top: 30px;">
+
+				<a href="/gio-hang" title="Giỏ hàng"><span class="glyphicon glyphicon-shopping-cart my-cart-icon" style="font-size: 23px;">
+					<span style="margin-left: -25px;margin-top: -22px;background-color: #ff1d11;" class="badge badge-notify my-cart-badge">{{total1}}</span>
+				</span></a>
+			</div>
+		</div>
+		<!-- end row -->
+	</div>
+	<!-- end container -->
+</div>
+<!-- end main-menu -->

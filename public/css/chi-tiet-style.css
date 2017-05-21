@@ -1,0 +1,388 @@
+
+.image-product-box {
+	float: left;
+	width: 100%
+}
+
+
+
+.detail-product-box{
+	
+
+}
+
+
+@media (min-width: 1px) {
+	.big-title-list-page{margin-bottom: 30px;}
+}
+@media (min-width: 992px) {
+	.big-title-list-page{margin-bottom: 0px;}
+}
+
+
+
+
+#list-page ul {
+	padding-left: 0px;
+} 
+
+.product-big-image {
+	float: left;
+	width: 100%;
+	border: 1px solid #bfbfbf;
+}
+.product-sm-image {
+	float: left;
+	width: 25%;
+	border: 1px solid #bfbfbf;
+	border-top: 0px;
+	border-right: 0px; 
+}
+.product-sm-image:last-child {
+	border-right: 1px solid #bfbfbf;
+} 
+
+.trang-chi-tiet .col-md-7 .name-product{
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+
+
+
+.produce-detail h2, .produce-detail-2 h2 {
+	text-align: center;
+	letter-spacing: 3px;
+	font-size: 30px;
+}
+.produce-detail h2 {
+	color: #333;
+}
+
+
+
+.price-product {
+	color:#E24545;
+	border-top: 1px solid #bfbfbf;
+	padding: 20px 0 10px 0 ;
+	margin-bottom: 0px;
+}
+@media (min-width: 1px) {
+	.price-product {border-top: 0px}
+}
+@media (min-width: 992px) {
+	.price-product {border-top: 1px solid #bfbfbf;}
+}
+
+
+
+
+
+.code {
+	margin-bottom: 30px;
+}
+.code span {
+	display: inline-block;
+	margin-left: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+
+
+.produce-detail-2 {
+	float: right;
+}
+
+/*-------------------------------------------------*/
+
+.produce-detail h2.name-product{
+	text-align: left;
+}
+.produce-detail h2  , .produce-detail h3 , .produce-detail-2 h2 {
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+.produce-detail h2 , .produce-detail-2 h2{
+	margin-top: 0px  ;
+}
+.produce-detail h3 {
+	font-size: 20px;
+	margin: 30px 0;
+}
+.produce-detail-2 h2 {
+	text-align: left;
+	float: none;
+	
+}
+.produce-detail ul {
+	width: 100%;
+}
+.produce-detail li {
+	width: 100%;
+	border-top: 1px solid #bfbfbf;
+}
+.produce-detail li p{
+	font-size: 15px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-bottom: 0px;
+	width: 100%;
+	display: inline-block;
+}
+.produce-detail li p span{
+	text-align: right;
+	float: right;
+
+
+}
+
+.last {
+	border-bottom: 1px solid #bfbfbf;
+}
+
+@media (min-width: 1px) {
+	.produce-detail p{padding-left: 0px ;}
+	.produce-detail p span{padding-right: 0px !important;width: auto;}
+}
+@media (min-width: 768px) {
+	.produce-detail p{padding-left: 100px ;}
+	.produce-detail p span{padding-right: 100px !important;width: 73%;}
+}
+@media (min-width: 992px) {
+	.produce-detail p{padding-left: 50px ;}
+	.produce-detail p span{padding-right: 50px !important;width: 73%;}
+}
+@media (min-width: 1200px) {
+	.produce-detail p{padding-left: 100px;}
+	.produce-detail p span{padding-right: 100px !important;width: 73%;}
+}
+
+
+
+/*----------------------------------------------*/
+
+
+
+.promotion {
+	border: 1px solid #bfbfbf;
+	border-bottom: 0px ;
+
+}
+.promotion>li {
+	border-bottom: 1px solid #bfbfbf;
+}
+
+.promotion li li {
+	list-style-type: disc !important;
+	margin-left: 30px;
+	padding: 10px;
+}
+
+
+.promotion li li:first-child{
+	list-style-type: none !important;
+	margin-left: 0px;
+	padding-bottom: 0px;
+	font-size: 16px;
+}
+.cut-bot{
+	padding-bottom: 0px !important;
+}
+
+
+
+.chi-tiet-active{
+	background: #bfbfbf;
+
+}
+.list-menu-box {
+	padding-left: 0px;
+	margin-top: 43px;
+}
+
+@media (min-width: 1px) {
+	.list-menu-box {display: none;}
+}
+@media (min-width: 992px) {
+	.list-menu-box {display: block;}
+}
+
+.mau1 , .mau2 , .mau3 , .mau4 {display: none;}
+
+
+.image-product-box img:first-child {
+	background: white;
+}
+@media (min-width: 1px) {
+	.image-product-box img:first-child {padding: 0px;}
+}
+@media (min-width: 1200px) {
+	.image-product-box img:first-child {padding:50px;}
+}
+
+
+.color-box {
+	float: left;
+	width: 39px;
+	height: 39px;
+	border: 2px solid white; 
+	margin-right: 2px;	
+}
+.color-text {
+	font-size: 20px;
+	margin: 24px 0;
+	display: inline-block;
+	width: 100%;
+	float: left;
+}
+.cb1 {background:#D8d8d8}
+.cb2 {background:#f3a4b4}
+.cb3 {background:#3a3a3a}
+.cb4 {background:#bd1324}
+.cb0 {background:#f9ceb3}
+
+
+
+.quantity {
+	border: 1px solid #e24545;
+	padding: 10px;
+	color: #E24545;
+}
+
+.product-buy-box{
+	padding: 20px;
+}
+
+
+.watch-more{
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	font-size:15px;
+	border: 1px solid #e24545;
+	background: transparent;
+	border-radius: 4px;
+	transition:all 0.1s ease-in-out;
+}
+.watch-more:hover {
+	color: white;
+	background: #e24545;
+}
+.cau-hinh-chi-tiet {
+	background: #e5e5e5;
+	display: none;
+}
+.cau-hinh-chi-tiet li {
+	display: flex;
+}
+.cau-hinh-chi-tiet li p {
+	padding: 8px;
+	
+}
+.cau-hinh-chi-tiet li p:first-child {
+	width: 35%;
+	float: left;
+	margin-left: 5%;
+
+
+}
+.cau-hinh-chi-tiet li p:last-child {
+	width: 60%;
+}
+.label {
+	display: block;
+    background: #ccc;
+    font-size: 16px;
+    font-weight: 600;
+    color: #c0392b;
+     padding: 10px 10px 10px 30px;
+     text-align: left;
+}
+
+.cau-hinh-chi-tiet li p:first-child {
+	font-weight: bold;
+}
+
+.appear {
+	display: block;
+}
+.close-button {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.video-box{
+	margin: 58px 0 0 0 ;
+
+}
+.video-text {
+	margin-bottom: 30px !important;
+}
+.chi-tiet-video {
+	width: 100%;
+	margin-bottom: 30px;
+
+}
+
+.no-margin{
+	margin: 0px !important;
+}
+
+
+@media (min-width: 1px) {
+	.video2 {display: block}
+}
+@media (min-width: 992px) {
+	.video2 {display: none}
+}
+@media (min-width: 1200px) {
+	.video2 {display: block}
+}
+
+
+
+.owl-carousel-slide .price-product {
+	border: 0;
+	padding-top: 0px;
+}
+.big-title {
+	margin: 0;
+}
+
+
+
