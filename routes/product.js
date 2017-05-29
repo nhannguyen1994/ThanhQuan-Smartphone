@@ -16,7 +16,16 @@ module.exports = function (express) {
 
     router.get('/', (req, res) => {
         //
-        let total1= req.session.total;
+        let idClient = req.cookies['cart'];
+        let cart = req.session.cart;
+        let total1=0;
+
+        for (var item in cart) {
+
+            total1 += parseInt(cart[item]);
+        }
+        //console.log(total1);
+        req.session.total=total1;
         //
         if (req.session.login === undefined) {
             req.session.login = false;
@@ -94,11 +103,22 @@ module.exports = function (express) {
     });
 
     router.get('/:id', function (req, res) {
+        //
+        let idClient = req.cookies['cart'];
+        let cart = req.session.cart;
+        let total1=0;
 
+        for (var item in cart) {
+
+            total1 += parseInt(cart[item]);
+        }
+        //console.log(total1);
+        req.session.total=total1;
+        //
         if (req.session.login === undefined) {
             req.session.login = false;
         }
-        let total1 = req.session.total;
+
         let id = req.params.id;
         db.task(t => {
             return t.batch([

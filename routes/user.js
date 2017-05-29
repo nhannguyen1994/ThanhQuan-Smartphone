@@ -97,7 +97,31 @@ module.exports = function (express) {
     });
 
     // Show user order info
-    // Nhan Thêm Routes Cho Đơn Hàng Vào Đây  ====================================
+    // Nhan Thêm Routes Cho Đơn Hàng Vào Đây  ==========================
+    router.get('/don-hang', (req, res) => {
+        if (req.session.login) {
+            db.any("SELECT orders_id, user_id, name, phone, email, note, status, total, payment_id, order_date, delivery_date FROM orders")
+                .then((data) => {
+                     //console.log(data);
+                     db.any("SELECT orders_id, product_id, product_type_id, product_name, price, quantity FROM detailed_orders")
+                         .then(data2 => {
+                             //console.log(data2);
+                            res.render('don-hang', {
+                                login: req.session.login,
+                                user: req.session.user,
+                                data: data,
+                                data2: data2
+                            });
+                         })
+                })
+        }
+        else
+            {
+                req.flash('error');
+                res.status(401).render('gio-hang', {login: req.session.login, user: req.session.user});
+            }
+    });
+
 
     // logout 
     router.get('/logout', (req, res) => {

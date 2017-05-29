@@ -21,6 +21,9 @@ module.exports = (app, express) => {
     const thanhcong = require('./thanh-cong')(express);
     app.use('/thanh-cong', thanhcong);
 
+    //const donhang = require('./don-hang')(express);
+    //app.use('/don-hang', donhang);
+
     app.get('/tin-tuc', (req, res) => {
         if (req.session.login === undefined) {
             req.session.login = false;

@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+{% block head %}
+<link href="/css/danh-sach-style.css" rel="stylesheet">
+<link href="/css/chi-tiet-style.css" rel="stylesheet">
+<link href="/css/gio-hang-style.css" rel="stylesheet">
+<!--<script src="/js/index.js"></script>-->
+{% endblock %}
+{% block content %}
+<section class="container" id="cart-page">
+	<div class="row mot-hang">
+		<a href="" class="big-title">ĐƠN HÀNG CỦA TÔI</a>
+		<span></span>
+	</div>
+	<div class="row">
+		{% for item in data %}
+		<div class="form-group line4">
+			<label for="note"><b>Đơn hàng của tôi ngày: {{ item.order_date }}</b></label>
+		</div>
+<!--
+		<div class="">
+			{% for item in data %}
+				{{item.orders_id}} <br>
+			{% endfor %}
+		</div>
+-->
+		<div class="form-group line4">
+			<label for="note">Trạng thái đơn hàng: {{ item.status }}</label>
+		</div>
+		<div class="row product-selected">
+			<div class="table-responsive">
+				<form action="" method="post">
+					<table class="table cart-table">
+						<thead>
+						<tr>
+							<th>STT</th>
+							<th colspan="2">Sản phẩm</th>
+							<th>Giá</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+
+						</tr>
+						</thead>
+						<tbody>
+						{% if data2 %}
+						{% for item in data2 %}
+						<tr>
+							<td>{{ loop.index }}</td>
+							{% if (item.product_type_id == 'ptdt')%}
+							<td class="img_cart"><img src="/images/products/{{ item.product_id }}_0.jpg"></td>
+							{% else %}
+							<td class="img_cart"><img src="/images/phukien/{{ item.product_id }}_0.jpg"></td>
+							{% endif %}
+							<td>{{ item.product_name }}</td>
+							<td>{{ item.price }} VNĐ</td>
+							<td>{{ item.quantity }}</td>
+							<td>{{ item.price }} VNĐ</td>
+
+						</tr>
+						{% endfor %}
+						{% else %}
+						<tr>
+							<td colspan="7">Không có sản phẩm trong giỏ</td>
+						</tr>
+						{% endif %}
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="7">
+								<a href="/dien-thoai" name="capnhat" class="btn btn-success" role="button">Tiếp tục mua hàng</a>
+								{% if cart %}
+								<a href="/dien-thoai" name="capnhat" class="btn btn-danger" role="button">Hủy đơn hàng</a>
+								{% endif %}
+							</td>
+						</tr>
+						</tfoot>
+					</table>
+				</form>
+			</div>
+		</div>
+		<!-- enf product-selected -->
+	</div>
+	{% endfor %}
+
+
+</section>
+{% endblock %}
