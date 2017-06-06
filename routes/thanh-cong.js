@@ -8,12 +8,12 @@ const product = new Product(db);
 
 let log = console.log;
 
-function getFormattedDate() {
-    var date = new Date();
-    var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-
-    return str;
-}
+// function getFormattedDate() {
+//     var date = new Date();
+//     var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+//
+//     return str;
+// }
 
 module.exports = function (express) {
     const router = express.Router();
@@ -74,34 +74,36 @@ module.exports = function (express) {
                             phone: req.body['phone'],
                             email: req.body['email'],
                             address: req.body['address'],
-                            payment_id: req.body['payment_id'],
+                            method: req.body['method'],
                             note: req.body['note'],
                             status: 'pending',
-                            order_date: getFormattedDate(),
+                            //order_date: getFormattedDate(),
                             //delivery_date: 'NULLIF("0000-00-00 00:00:00", "0000-00-00 00:00:00")::timestamp',
                             delivery_date: '0000-00-00 00:00:00',
+                            quantity: req.session.total,
                             total: total
                         };
 
                         // create an array of all products to be inserted into detailed_orders table
                         let allProductsArr = [];
                         // Insert order info into orders table
-                        db.query("INSERT INTO orders (orders_id, user_id, name, phone, email, address, note, status, total, payment_id, order_date, delivery_date)" +
-                            "VALUES(${id}, ${user_id}, ${name}, ${phone}, ${email}, ${address}, ${note}, ${status}, ${total}, ${payment_id}, ${order_date}, ${delivery_date}) RETURNING orders_id", orderData)
-                            .then((returned_orders_id) => {
-                                // returned_orders_id is actually an array of object [ anonymous { orders_id: 'Syl60xDeb' } ]
+                        db.query("INSERT INTO orders (orders_id, user_id, name, phone, email, address, note, status, total, method, order_date, delivery_date, quantity)" +
+                            "VALUES(${id}, ${user_id}, ${name}, ${phone}, ${email}, ${address}, ${note}, ${status}, ${total}, ${method}, (select localtimestamp(0)), ${delivery_date}, ${quantity}) RETURNING *", orderData)
+                            .then(data => {
+                                orderData = data[0];
+                                // data is actually an array of object [ anonymous { orders_id: 'Syl60xDeb' } ]
                                 // insert into detailed_orders
                                 allProducts.forEach(item => {
                                     let id = shortid.generate();
                                     let eachProduct = {
                                         detailed_orders_id: id,
-                                        orders_id: returned_orders_id[0].orders_id,
+                                        orders_id: data[0].orders_id,
                                         product_id: item.product_id,
                                         product_type_id: item.product_type_id,
                                         product_name: item.product_name,
                                         quantity: cart[item.product_id],
                                         price: item.price
-                                    }
+                                    };
                                     allProductsArr.push(eachProduct);
                                     // insert each product into detailed_orders
                                     db.query("INSERT INTO detailed_orders (detailed_orders_id, orders_id, product_id, product_type_id, product_name, quantity, price) VALUES(${detailed_orders_id}, ${orders_id}, ${product_id}, ${product_type_id}, ${product_name}, ${quantity}, ${price})", eachProduct);
